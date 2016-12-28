@@ -1,0 +1,3 @@
+#!/bin/sh
+/home/dashu/icecast/bin/restart.sh
+/home/dashu/WeixinRobot/bin/restart.sh
