@@ -11,10 +11,15 @@ RUN ./configure --libdir=/usr/lib &&\
 
 
 RUN useradd dashu
-USER dashu
+#USER dashu
 WORKDIR /home/dashu
 ADD icecast.tar.gz ./
 ADD WeixinRobot.tar.gz ./
 ADD run ./
 RUN chmod +x run
+
+EXPOSE 80
+ENV DUMP_DATA_DIR /home/dashu/dump_data
+VOLUME $DUMP_DATA_DIR
+RUN chown -R dashu:dashu /home/dashu
 CMD ["/home/dashu/run"]

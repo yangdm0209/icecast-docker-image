@@ -1,3 +1,22 @@
 #!/bin/sh
+
+if [ $DUMP_DATA_DIR ]; then
+  for i in $(seq 1 20)
+  do
+    if [ ! -d "$DUMP_DATA_DIR/cnv$i/data" ]; then
+      mkdir -p "$DUMP_DATA_DIR/cnv$i/data"
+      mkdir -p "$DUMP_DATA_DIR/cnv$i/merge"
+    fi
+  done
+  for i in $(seq 1 9)
+  do
+    if [ ! -d "$DUMP_DATA_DIR/interview$i/data" ]; then
+      mkdir -p "$DUMP_DATA_DIR/interview$i/data"
+      mkdir -p "$DUMP_DATA_DIR/interview$i/merge"
+    fi
+  done
+fi
+chown -R dashu:dashu $DUMP_DATA_DIR
+
 /home/dashu/icecast/bin/restart.sh
 /home/dashu/WeixinRobot/bin/restart.sh
